@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+#All_blacks_CLI
+
+require_relative "../lib/all_blacks_players.rb"
+require_relative "../lib/all_blacks_scraper.rb"
+require_relative "../lib/CLI.rb"
+require 'nokogiri'
+
+CLI.new.call
