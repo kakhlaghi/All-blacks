@@ -1,8 +1,12 @@
 # All::Black::Roster
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/all/black/roster`. To experiment with that code, run `bin/console` for an interactive prompt.
+All Blacks Roster CLI 
 
-TODO: Delete this and the text above, and describe your gem
+Thanks for using the All Blacks Roster CLI. 
+This program presents the current roster of the New Zealand All Blacks rugby team, as well as provides information about each player.
+
+This program requires Ruby:
+https://www.ruby-lang.org/en/downloads/
 
 ## Installation
 
@@ -22,7 +26,10 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Be sure to use "bundle install" in your terminal before running this program.
+In your terminal:
+cd to All-blacks (the main folder)
+Run the program through ./bin/all-black
 
 ## Development
 

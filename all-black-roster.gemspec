@@ -1,11 +1,11 @@
 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "all/black/version"
+require "all/black/roster/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "all-black"
-  spec.version       = All::Black::VERSION
+  spec.version       = All::Black::Roster::VERSION
   spec.authors       = ["'Kevin Akhlaghi'"]
   spec.email         = ["'kevin.akhlaghi@gmail.com'"]
 

@@ -41,6 +41,10 @@ def menu
     menu
   elsif input == "quit"
     goodbye
+  else
+    puts "Sorry didn't recognize that command. Please try again!"
+    puts "\n"
+    menu
   end
 
 end
@@ -48,11 +52,16 @@ end
 def player_menu
   puts "To inspect a player, type their name or number below. Type Menu to return to main menu"
   input2 = gets.strip.downcase
+  #players_downcased = Player.all.map(&:downcase) for future improvements
   if input2 == "menu"
+    Player.reset #reset prevents multiple acting instances of player list... consider other ways
     menu
+  elsif input2.downcase == "quit"
+    goodbye
   else
     player_attributer(input2)
     player_info_displayer(input2)
+    Player.reset
     menu
   end
 end
@@ -84,6 +93,7 @@ def players_displayer
   Player.all.each.with_index do |player, index|
     puts "#{index} #{Player.all[index].name}."
   end
+
 end
 
 def player_info_displayer(input_name)

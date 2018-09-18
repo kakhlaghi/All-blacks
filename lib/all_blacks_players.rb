@@ -28,5 +28,9 @@ class Player
 		end
 		self
 	end
+	
+	def self.reset
+	  @@all = []
+	 end
 
 end
