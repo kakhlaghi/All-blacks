@@ -32,21 +32,20 @@ def self.scrape_player_page(player_url)
 		index.even? ? tag << item : detail << item
 	end
 	tag.each.with_index do |item, index|
-		case index
-		when 0
-			player[:position] = "#{detail[0]}"
-		when 1
-			player[:birthday] = "#{detail[1]}"
-		when 2
-			player[:physical] = "#{detail[2]}"
-		when 3
-			player[:test_debut] = "#{detail[3]}"
-		when 4
-			player[:point_breakdown] = "#{detail[4]}"
-		when 5
-			player[:points_scored] = "#{detail[5]}"
-		when 6
-			player[:caps] = "#{detail[6]}"
+		if tag[index].include?("Position")
+			player[:position] = "#{detail[index]}"
+		elsif tag[index].include?("Born")
+			player[:birthday] = "#{detail[index]}"
+		elsif tag[index].include?("Physical")
+			player[:physical] = "#{detail[index]}"
+		elsif tag[index].include?("Test Debut")
+			player[:test_debut] = "#{detail[index]}"
+		elsif tag[index] == "Test Points Breakdown:"
+			player[:point_breakdown] = "#{detail[index]}"
+		elsif tag[index] == "Test Points:"
+			player[:points_scored] = "#{detail[index]}"
+		elsif tag[index].include?("Caps")
+			player[:caps] = "#{detail[index]}"
 		end
 		end
 	player
