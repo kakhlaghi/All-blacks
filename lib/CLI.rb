@@ -58,6 +58,7 @@ def player_menu
     menu
   elsif input2.downcase == "quit"
     goodbye
+
   else
     player_attributer(input2)
     player_info_displayer(input2)
@@ -79,7 +80,7 @@ end
 
 def player_attributer(input)
   Player.all.each.with_index do |player,index|
-  if Player.all[index].name.downcase == input || index == input
+  if Player.all[index].name.downcase == input || index == input.to_i - 1
     attributes = TeamScraper.scrape_player_page(BASE_PATH + Player.all[index].player_url)
     player.add_player_info(attributes)
   else
@@ -91,15 +92,15 @@ end
 
 def players_displayer
   Player.all.each.with_index do |player, index|
-    puts "#{index} #{Player.all[index].name}."
+    puts "#{index+1} #{Player.all[index].name}."
   end
 
 end
 
 def player_info_displayer(input_name)
   Player.all.each.with_index do |player, index|
-    if Player.all[index].name.downcase == input_name || index == input_name
-      puts "Name: #{input_name}."
+    if Player.all[index].name.downcase == input_name || index == input_name.to_i-1
+      puts "Name: #{player.name.upcase}."
       puts "Position: #{player.position}."
       puts "Hieght and Weight: #{player.physical}."
       puts "First test match: #{player.test_debut}."
