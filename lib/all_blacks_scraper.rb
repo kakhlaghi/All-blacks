@@ -44,7 +44,7 @@ def self.scrape_player_page(player_url)
 			player[:point_breakdown] = "#{detail[index]}"
 		elsif tag[index] == "Test Points:"
 			player[:points_scored] = "#{detail[index]}"
-		elsif tag[index].include?("Caps")
+		elsif tag[index] == "Caps:"
 			player[:caps] = "#{detail[index]}"
 		end
 		end
