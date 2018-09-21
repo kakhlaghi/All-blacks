@@ -26,11 +26,7 @@ class Player
 		info_hash.each do |attr, value|
 			self.send("#{attr}=", value)
 		end
-		self
 	end
 	
-	def self.reset
-	  @@all = []
-	 end
 
 end
