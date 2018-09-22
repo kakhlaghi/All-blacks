@@ -1,6 +1,7 @@
 
 class CLI
   BASE_PATH = "https://www.allblacks.com"
+
   def call
     greeting
     player_maker
@@ -48,15 +49,13 @@ class CLI
     input2 = gets.strip.downcase
     #players_downcased = Player.all.map(&:downcase) for future improvements
     if input2 == "menu"
-      #Player.reset #reset prevents multiple acting instances of player list... consider other ways
       menu
     elsif input2.downcase == "quit"
       goodbye
-
+    
     else
       player_attributer(input2)
       player_info_displayer(input2)
-      #Player.reset
       menu
     end
   end
@@ -74,22 +73,20 @@ class CLI
 
   def player_attributer(input)
     Player.all.each.with_index do |player,index|
-      if Player.all[index].name.downcase == input || index == input.to_i - 1
+      if Player.all[index].name.downcase == input || index == input.to_i - 1 && Player.all[index].position == nil
         attributes = TeamScraper.scrape_player_page(BASE_PATH + Player.all[index].player_url)
         player.add_player_info(attributes)
-      else
-        "He's not on the squad!"
       end
     end
 
-end
-
-def players_displayer
-  Player.all.each.with_index do |player, index|
-    puts "#{index+1} #{Player.all[index].name}."
   end
 
-end
+  def players_displayer
+    Player.all.each.with_index do |player, index|
+      puts "#{index+1} #{Player.all[index].name}."
+    end
+
+  end
 
   def player_info_displayer(input_name)
     Player.all.each.with_index do |player, index|
@@ -105,4 +102,5 @@ end
       end
     end
   end
+  
 end
