@@ -72,13 +72,20 @@ class CLI
   end
 
   def player_attributer(input)
-    Player.all.each.with_index do |player,index|
-      if Player.all[index].name.downcase == input || index == input.to_i - 1 && Player.all[index].position == nil
-        attributes = TeamScraper.scrape_player_page(BASE_PATH + Player.all[index].player_url)
-        player.add_player_info(attributes)
+    if input.to_i > Player.all.size || input.to_i < 1
+      puts "\n"
+      puts "That's outside of the range of players! Please look at the list again."
+      puts "\n"
+      #players_displayer
+      player_menu
+    else
+      Player.all.each.with_index do |player,index|
+        if Player.all[index].name.downcase == input || index == input.to_i - 1 && Player.all[index].position == nil
+          attributes = TeamScraper.scrape_player_page(BASE_PATH + Player.all[index].player_url)
+          player.add_player_info(attributes)
+        end
       end
     end
-
   end
 
   def players_displayer
